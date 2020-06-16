@@ -140,12 +140,12 @@ $pp = $sth->fetch(PDO::FETCH_OBJ);
 </form>
 <form class="ui form" action="" method="POST">
     <div class="field">
-        <input type="password" name="password" placeholder="Entrez votre nouvelle email">
+        <input type="email" name="email" placeholder="Entrez votre nouvelle email">
     </div>
     <div class="field">
-        <input type="password" name="password_confirm" placeholder="Confirmer l'email">
+        <input type="email" name="email_confirm" placeholder="Confirmer l'email">
     </div>
-    <button name=" password_change" type="submit" class="ui primary button">Changer mon adresse mail</button>
+    <button name="email_change" type="submit" class="ui primary button">Changer mon adresse mail</button>
 </form>
 </div>
 

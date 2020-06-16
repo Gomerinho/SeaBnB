@@ -10,7 +10,7 @@ if (!empty($_POST) && !empty($_POST['email'])) {
         $reset_token = str_random(60);
         $pdo->prepare('UPDATE users SET reset_token = ?, reset_at = NOW() WHERE id = ?')->execute([$reset_token, $user->id]);
         $_SESSION['flash']['success'] = 'Les instructions du rappel du mot de passe vous ont été envoyées par email';
-        mail($_POST['email'], "Réinitialisation de votre mot de passe SeaBnb", "Afin de réinitialiser votre mot de passe : \n Merci de cliquer sur ce lien \n\n http://localhost:8888/Projet_Ydays_Restaurant/Projet_restaurant_Ydays/reset.php?id={$user->id}&token=$reset_token");
+        mail($_POST['email'], "Réinitialisation de votre mot de passe SeaBnb", "Afin de réinitialiser votre mot de passe : \n Merci de cliquer sur ce lien \n\n http://localhost:8888/SEABNB/SeaBnB/reset.php?id={$user->id}&token=$reset_token");
         header('Location: login.php');
         exit();
     } else {

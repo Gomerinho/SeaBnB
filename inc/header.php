@@ -180,11 +180,17 @@ if (session_status() == PHP_SESSION_NONE) {
     <!-- Following Menu -->
     <div class="ui large top fixed hidden menu">
         <div class="ui container">
-            <a class="active item" href="index.php">Acceuil</a>
-
+            <a class="item" href="index.php">Acceuil</a>
+            <?php if (isset($_SESSION['auth'])) { ?>
+                <a href="add_adverts.php" class="item">Ajouter/Modifier une annonce</a>
+                <a href="reservation_user.php" class="item">Mes réservations</a>
+            <?php } ?>
             <div class="right menu">
                 <div class="right item">
                     <?php if (isset($_SESSION['auth'])) : ?>
+                        <?= $_SESSION['auth']->wallet; ?>
+                        <i class="credit card outline icon"></i>
+                        <a href="account.php" class="ui primary button">Mon Compte</a>
                         <a href="logout.php" class="ui inverted primary button">Se déconnecter</a>
                     <?php else : ?>
                         <div class="item">
@@ -211,20 +217,24 @@ if (session_status() == PHP_SESSION_NONE) {
     <!-- Page Contents -->
     <div class="pusher">
         <div class="ui inverted vertical masthead center aligned segment">
+            <img src="favicon.png" alt="" width="80px" style="display: flex;
+    position: absolute;
+    left: 4rem;">
             <div class="ui container">
                 <div class="ui large secondary inverted pointing menu">
                     <a class="toc item">
                         <i class="sidebar icon"></i>
                     </a>
-                    <a class="active item" href="index.php">Acceuil</a>
-
+                    <a class="item" href="index.php">Acceuil</a>
                     <?php if (isset($_SESSION['auth'])) :  ?>
-                        <?php if ($_SESSION['auth']->admin == 1) : ?>
-                            <a href="reservation.php" class="item">Réservation Client</a>
-                        <?php endif; ?>
+                        <a href="add_adverts.php" class="item">Ajouter/Modifier une annonce</a>
+                        <a href="reservation_user.php" class="item">Mes réservations</a>
                     <?php endif ?>
                     <div class="right item">
                         <?php if (isset($_SESSION['auth'])) : ?>
+                            <?= $_SESSION['auth']->wallet; ?>
+                            <i class="credit card outline icon"></i>
+                            <a href="account.php" class="ui primary button">Mon Compte</a>
                             <a href="logout.php" class="ui inverted primary button">Se déconnecter</a>
                         <?php else : ?>
                             <a class="ui primary button" href="login.php">Se connecter</a>
@@ -234,17 +244,3 @@ if (session_status() == PHP_SESSION_NONE) {
                 </div>
             </div>
         </div>
-        <?php if (!empty($errors)) : ?>
-            <div class="ui error message">
-                <i class="close icon"></i>
-                <div class="header">
-                    Vous n'avez pas remplis le formulaire correctement
-                </div>
-                <ul class="list">
-                    <?php foreach ($errors as $error) : ?>
-                        <li><?= $error; ?></li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
-
-        <?php endif; ?>

@@ -34,8 +34,15 @@ require 'inc/header_index.php';
     <div class="ui horizontal divider" id="menu">
         <h1 class="ui center aligned header" id="menu">NOTRE SITE</h1>
     </div>
-    <div class="ui middle aligned stackable grid container" style="margin-top: 5%;margin-bottom: 5%">
+    <div class="ui header" style="text-align: center;">
+        <p>Notre site vous permet de réserver rapidement une location de véhicules marins.</p>
+        <p>Chaque utilisateur peut poster ou louer un bateau quand il le souhaite.</p>
+        <p>
+            En espérant que vous allez trouver ce que vous souhaiter ! Bonne navigation !
+        </p>
+        <p>L'équipe SeaBnB</p>
     </div>
+
 </div>
 
 <?php require 'inc/footer.php'; ?>

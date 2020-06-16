@@ -1,6 +1,6 @@
 <?php
 require_once 'inc/function.php';
-recconnect_from_cookie();
+
 if (isset($_SESSION['auth'])) {
     header('Location: account.php');
     exit();
@@ -15,15 +15,24 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password'])) 
         session_start();
         $_SESSION['auth'] = $user;
         $_SESSION['flash']['success'] = 'Vous êtes maintenant connecté';
+        header('Location: account.php');
+        exit();
+    } else {
+        $errors['username'] = 'Identifiant ou mot de passe incorrecte';
     }
-    header('Location: account.php');
-    exit();
-} else {
-    $errors['username'] = 'Identifiant ou mot de passe incorrecte';
 }
 
 ?>
-<?php require 'inc/header_non_active.php'; ?>
+<?php include 'inc/header.php'; ?>
+
+<?php if (isset($_SESSION['flash'])) : ?>
+    <?php foreach ($_SESSION['flash'] as $type => $message) : ?>
+        <div class="ui <?= $type ?> message center">
+            <?= $message; ?>
+        </div>
+    <?php endforeach; ?>
+    <?php unset($_SESSION['flash']); ?>
+<?php endif; ?>
 
 <h1 class="ui header" style="
     text-align: center;
@@ -58,7 +67,7 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password'])) 
             <input type="password" name="password">
             <a href="forget.php">J'ai oublié mon mot de passe</a>
         </div>
-        <button class="ui button" type="submit">Se connecter</button>
+        <button class="ui button" type="submit" name="login">Se connecter</button>
     </form>
 </div>
 

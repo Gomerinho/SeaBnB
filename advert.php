@@ -23,10 +23,10 @@ $user = $_SESSION['auth'];
             </div>
             <div class="ui centered card">
                 <div class="image">
-                    <img src="img/users/1/pp.jpg">
+                    <img src="<?= $advert->profil_pic ?>">
                 </div>
                 <div class="content">
-                    <a class="header"><?= $advert->name ?> <?= $advert->first_name ?></a>
+                    <div class="header"><?= $advert->name ?> <?= $advert->first_name ?></div>
                     <div class="meta">
                         <span class="date"><?= $advert->username ?></span>
                     </div>
