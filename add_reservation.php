@@ -8,8 +8,8 @@ if (intval($user->wallet) >= (intval($_POST['price_ad']) * intval($_POST['nb_per
     $req->execute([$_POST['date_start'], $_POST['date_end'], $_POST['nb_person'], $_POST['user_id'], $_POST['id_ad']]);
     $req = $pdo->prepare('UPDATE users SET users.wallet = users.wallet - ? WHERE id= ' . $user->id);
     $req->execute([(intval($_POST['price_ad']) * intval($_POST['nb_person']))]);
-    $req = $pdo->prepare('UPDATE users SET users.wallet = ? WHERE id= ' . $advert->id);
-    $req->execute([intval($_POST['price_ad'])]);
+    $req = $pdo->prepare('UPDATE users SET users.wallet = users.wallet + ? WHERE id= ' . $advert->id);
+    $req->execute([intval($_POST['price_ad' * intval($_POST['nb_person']])]);
     $From  = "From:SeaBnb@service.com\n";
     $From .= "MIME-version: 1.0\n";
     $From .= "Content-type: text/html; charset= iso-8859-1\n";
